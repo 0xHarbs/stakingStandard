@@ -35,9 +35,27 @@ const config: HardhatUserConfig = {
   },
   etherscan: {
     apiKey: {
-      cronosTestnet: <string>process.env.CRONOS_TESTNET_API_KEY,
-      cronos: <string>process.env.CRONOS_API_KEY,
+      cronosTestnet: CRONOS_TESTNET_API_KEY,
+      cronos: CRONOS_API_KEY,
     },
+    customChains: [
+      {
+        network: "cronosTestnet",
+        chainId: 338,
+        urls: {
+          apiURL: "https://api-testnet.cronoscan.com/api",
+          browserURL: "https://testnet.cronoscan.com/",
+        }
+      },
+      {
+        network: "cronos",
+        chainId: 25,
+        urls: {
+          apiURL: "https://evm.cronos.org/api",
+          browserURL: "https://cronos-explorer.crypto.org/",
+        }
+      },
+    ]
   },
   gasReporter: {
     enabled: true,
